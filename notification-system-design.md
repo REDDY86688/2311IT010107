@@ -1198,7 +1198,7 @@ while(queue is not empty):
 
 For large-scale notification delivery, asynchronous processing is more reliable than sequential execution. By storing notifications first and then using a message queue with dedicated workers for email and in-app delivery, the system becomes faster, fault tolerant, and scalable. This design ensures that temporary failures do not result in lost notifications while providing a better experience for both administrators and students.
 ---------------
-# Stage 6
+Stage 6
 Priority Inbox for Notifications
 Problem Statement
 
@@ -1219,7 +1219,7 @@ Event	1
 
 If two notifications have the same priority weight, the newer notification should appear first.
 
-# Strategy 1: Assign Priority Weights
+Strategy 1: Assign Priority Weights
 
 Each notification is assigned a numerical weight based on its category.
 
@@ -1246,7 +1246,7 @@ Users receive the latest important information.
 Better user experience.
 Tradeoffs
 Requires sorting by timestamp after comparing priority.
-# Strategy 3: Return Only Top N Notifications
+Strategy 3: Return Only Top N Notifications
 
 Instead of displaying every unread notification, the application returns only the required number requested by the user.
 
@@ -1259,7 +1259,7 @@ Less memory consumption.
 Reduced processing.
 Tradeoffs
 Older notifications require additional requests.
-# Strategy 4: Efficient Top N Maintenance
+Strategy 4: Efficient Top N Maintenance
 
 As new notifications continue to arrive, repeatedly sorting all notifications becomes inefficient.
 
@@ -1303,7 +1303,7 @@ Remove the lowest-priority notification if the heap exceeds 10 elements.
 
 This avoids sorting the complete notification list every time.
 
-# Advantages
+Advantages
 Fast retrieval of important notifications.
 Easy to customize Top N values.
 Supports continuous notification updates.
@@ -1313,6 +1313,6 @@ Tradeoffs
 Additional logic is required for priority calculation.
 Priority Queue consumes extra memory.
 Business priority rules must be maintained as requirements change.
-# Conclusion
+Conclusion
 
 The Priority Inbox improves the notification experience by displaying the most important unread notifications first. Notifications are ranked using category priority and recency, ensuring that students receive critical placement and result updates before less important events. Using a Priority Queue to maintain the Top N notifications provides an efficient and scalable solution for handling continuous notification updates while maintaining excellent performance.
